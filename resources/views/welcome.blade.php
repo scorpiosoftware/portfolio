@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Portfolio SSO</title>
 
     <!-- Fonts -->
@@ -19,10 +19,12 @@
 </head>
 
 <body class="font-sans antialiased d:bg-black d:text-white/50">
-    <div class="bg-gray-50 text-black/50 d:bg-black d:text-white/50">
+    <x-navbar/>
+    <div class="bg-gray-50 text-black/50 d:bg-black d:text-white/50 ">
         {{-- <img id="background" class="absolute -left-20 top-0 max-w-[877px]"
             src="https://laravel.com/assets/img/welcome/background.svg" alt="Laravel background" /> --}}
-            <img src="imgs/pc.png" class="mx-auto md:w-1/3" alt="">
+        <x-hero/>
+        <img src="imgs/pc.png" class="mx-auto md:w-1/3" alt="">
         <div class="text-center pb-10">
             <h1 class="text-4xl text-black font-bold leading-snug">WEBSITES AND APPS</h1>
             <h2 class="text-3xl text-blue-500">Seamless design & top-notch development</h2>

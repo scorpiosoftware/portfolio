@@ -1,8 +1,8 @@
 <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
     <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
         <div class="w-full bg-blue-500 p-2 rounded-t-lg"></div>
-        <div class="w-full max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8">
-        
+        <div class="w-full max-w-lg p-4 bg-white border border-gray-200 rounded-b-lg shadow-sm sm:p-8">
+
             <h5 class="mb-4 text-2xl font-medium text-center text-gray-500 d:text-gray-400">LANDING PAGE</h5>
             <ul role="list" class="space-y-5 my-7">
                 <li class="flex items-start">
