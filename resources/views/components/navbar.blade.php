@@ -1,6 +1,6 @@
 <nav class="fixed top-0 w-full h-auto z-50 bg-[#0b939f]">
     <div class="flex justify-between items-center px-4 pt-2 pb-2 mx-auto">
-           <div class="text-2xl  font-bold text-white p-2 rounded-md">Scorpio Software</div>
+           <div class="text-2xl  font-bold text-white p-2 rounded-md">{{ $content['brand_name'] ?? 'Scorpio Software' }}</div>
            <div class="flex justify-start items-center gap-x-10 text-white font-thin text-sm">
             <a href="#Home">Home</a>
             <a href="#Services">Services</a>

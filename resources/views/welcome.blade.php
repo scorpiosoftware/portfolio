@@ -150,10 +150,10 @@
                     <div class="transform transition-all duration-300 group-hover:translate-x-1">
                         <h1
                             class="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                            Scorpio Software
+                            {{ $content['brand_name'] ?? 'Scorpio Software' }}
                         </h1>
                         <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Software Developement • Software Engineer
+                            {{ $content['brand_tagline'] ?? 'Software Development • Software Engineer' }}
                         </p>
                     </div>
                 </div>
@@ -249,17 +249,16 @@
                     <span
                         class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-medium mb-6 animate-pulse">
                         <span class="w-2 h-2 bg-indigo-500 rounded-full animate-ping"></span>
-                        Available for new projects
+                        {{ $content['hero_badge'] ?? 'Available for new projects' }}
                     </span>
 
                     <h2
                         class="text-5xl md:text-6xl font-black leading-tight bg-gradient-to-br from-gray-900 via-indigo-800 to-purple-700 dark:from-white dark:via-indigo-200 dark:to-purple-300 bg-clip-text text-transparent animate-gradient">
-                        I build fast, maintainable web apps & e‑commerce systems
+                        {{ $content['hero_headline'] ?? 'I build fast, maintainable web apps & e‑commerce systems' }}
                     </h2>
 
                     <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                        I design and develop portfolio sites, business websites, e‑commerce stores and full POS systems.
-                        I also provide hosting, domain setup and continuous support.
+                        {{ $content['hero_description'] ?? 'I design and develop portfolio sites, business websites, e‑commerce stores and full POS systems. I also provide hosting, domain setup and continuous support.' }}
                     </p>
 
                     <div class="mt-8 flex flex-wrap gap-4">
@@ -290,10 +289,10 @@
                     <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
                         @php
                             $stats = [
-                                ['label' => 'Years', 'value' => '6+', 'delay' => '0'],
-                                ['label' => 'Projects', 'value' => '30+', 'delay' => '100'],
-                                ['label' => 'Clients', 'value' => '20+', 'delay' => '200'],
-                                ['label' => 'Support', 'value' => '24/7', 'delay' => '300'],
+                                ['label' => 'Years',    'value' => $content['hero_stat_years']    ?? '6+',   'delay' => '0'],
+                                ['label' => 'Projects', 'value' => $content['hero_stat_projects'] ?? '30+',  'delay' => '100'],
+                                ['label' => 'Clients',  'value' => $content['hero_stat_clients']  ?? '20+',  'delay' => '200'],
+                                ['label' => 'Support',  'value' => $content['hero_stat_support']  ?? '24/7', 'delay' => '300'],
                             ];
                         @endphp
                         @foreach ($stats as $stat)
@@ -330,8 +329,8 @@
 
                             <h3
                                 class="font-bold text-xl mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                                Featured Project</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">E-commerce websites built from scratch &amp; complete POS systems tailored for small to medium businesses.</p>
+                                {{ $content['hero_featured_title'] ?? 'Featured Project' }}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">{{ $content['hero_featured_desc'] ?? 'E-commerce websites built from scratch & complete POS systems tailored for small to medium businesses.' }}</p>
 
                             <div
                                 class="bg-white/50 dark:bg-gray-800/50 backdrop-blur rounded-xl p-4 border border-gray-200 dark:border-gray-700 mb-6">
@@ -388,113 +387,20 @@
             <!-- Services Section -->
             <section id="services" class="mt-20 scroll-mt-20">
                 <div class="text-center mb-12 animate-fade-in-up">
-                    <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">What
-                        I Offer</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">{{ $content['services_subtitle'] ?? 'What I Offer' }}</span>
                     <h3
                         class="text-4xl font-black mt-2 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                        Services</h3>
-                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">I offer end-to-end services:
-                        planning, development, deployment, hosting, domain management and ongoing maintenance.</p>
+                        {{ $content['services_title'] ?? 'Services' }}</h3>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{{ $content['services_description'] ?? 'I offer end-to-end services: planning, development, deployment, hosting, domain management and ongoing maintenance.' }}</p>
                 </div>
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @php
-                        $services = [
-                            [
-                                'id' => 1,
-                                'icon' => '🎨',
-                                'title' => 'Portfolio Website',
-                                'subtitle' => 'Fast, SEO-friendly personal portfolio',
-                                'price' => '',
-                                'popular' => false,
-                                'features' => [
-                                    'Responsive one-page or multi-page',
-                                    'Contact form + Mail setup',
-                                    'Deploy to your domain',
-                                ],
-                            ],
-                            [
-                                'id' => 2,
-                                'icon' => '🚀',
-                                'title' => 'Business Website',
-                                'subtitle' => 'Corporate sites, blogs, and landing pages',
-                                'price' => '',
-                                'popular' => true,
-                                'features' => [
-                                    'Admin panel & CMS',
-                                    'SSL, backups, analytics',
-                                    'Performance & SEO optimization',
-                                ],
-                            ],
-                            [
-                                'id' => 3,
-                                'icon' => '🛒',
-                                'title' => 'Basic E‑commerce',
-                                'subtitle' => 'Full online store',
-                                'price' => '',
-                                'popular' => false,
-                                'features' => [
-                                    'Admin panel & CMS',
-                                    'Product management & payments',
-                                    'Shipping, coupons',
-                                    'Cash on Delivery',
-                                ],
-                            ],
-                            [
-                                'id' => 4,
-                                'icon' => '💳',
-                                'title' => 'Basic POS System',
-                                'subtitle' => 'Retail & restaurant solution',
-                                'price' => '',
-                                'popular' => true,
-                                'features' => [
-                                    'Inventory management',
-                                    'Barcode scanning',
-                                    'Receipt printing',
-                                    'Sales reporting & analytics',
-                                    'Multi-payment options (cash, card, mobile)',
-                                    'Customer management',
-                                    'Tax calculation',
-                                ],
-                            ],
-                            [
-                                'id' => 5,
-                                'icon' => '🍽️',
-                                'title' => 'Restaurant POS & Menu Manager',
-                                'subtitle' => 'Complete digital menu & order system',
-                                'price' => '',
-                                'popular' => true,
-                                'features' => [
-                                    '📱 Digital Menu Management (Categories, Modifiers, Images)',
-                                    '🔄 Real-Time Order Sync (Dine-in, Takeaway, Delivery)',
-                                    '💳 POS Integration (Table Management, Split Bills, Kot Printing)',
-                                    '🎯 Promotions & Offers (Happy Hour, Combo Deals, Coupons)',
-                                    '📢 Ads Manager (Push Notifications, Banner Ads, Upsell Suggestions)',
-                                    '📊 Analytics Dashboard (Top Items, Peak Hours, Customer Trends)',
-                                    '🌐 QR Code Ordering (Contactless Menu & Payment)',
-                                ],
-                                'note' => 'Customizable for cafes, bars & cloud kitchens',
-                            ],
-                            // [
-                            //     'id' => 3,
-                            //     'icon' => '🛒',
-                            //     'title' => 'E‑commerce + POS',
-                            //     'subtitle' => 'Full online store + Point of Sale',
-                            //     'price' => '$2,000',
-                            //     'popular' => false,
-                            //     'features' => [
-                            //         'Product management & payments',
-                            //         'POS integration for stores',
-                            //         'Shipping, coupons, reports',
-                            //     ],
-                            // ],
-                        ];
-                    @endphp
+                    @php $services = \App\Models\Service::orderBy('sort_order')->orderBy('id')->get(); @endphp
 
                     @foreach ($services as $index => $service)
                         <article class="group relative animate-fade-in-up"
                             style="animation-delay: {{ $index * 100 }}ms">
-                            @if ($service['popular'])
+                            @if ($service->popular)
                                 <span
                                     class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold rounded-full shadow-lg z-10">POPULAR</span>
                             @endif
@@ -506,13 +412,12 @@
 
                                 <div class="relative z-10">
                                     <span class="text-4xl mb-4 block animate-bounce"
-                                        style="animation-delay: {{ $index * 200 }}ms">{{ $service['icon'] }}</span>
-                                    <h4 class="font-bold text-xl mb-2">{{ $service['title'] }}</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">{{ $service['subtitle'] }}
-                                    </p>
+                                        style="animation-delay: {{ $index * 200 }}ms">{{ $service->icon }}</span>
+                                    <h4 class="font-bold text-xl mb-2">{{ $service->title }}</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">{{ $service->subtitle }}</p>
 
                                     <ul class="space-y-3 mb-8">
-                                        @foreach ($service['features'] as $feature)
+                                        @foreach ($service->features ?? [] as $feature)
                                             <li class="flex items-start gap-3 text-sm">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
@@ -525,10 +430,10 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                    <div class="flex items-center justify-between  max-h-24">
+                                    <div class="flex items-center justify-between max-h-24">
                                         <div
                                             class="text-3xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                                            {{ $service['price'] }}</div>
+                                            {{ $service->price }}</div>
                                         <a href="#contact"
                                             class="group/btn inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-lg font-medium shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                                             Start
@@ -680,8 +585,7 @@
                             <div
                                 class="relative rounded-2xl border-2 border-gray-200 dark:border-gray-700 p-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-xl">
                                 <h3 class="text-2xl font-bold mb-4">Contact & Availability</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-6">Based in Beirut, Lebanon — available
-                                    for remote or local projects.</p>
+                                <p class="text-gray-600 dark:text-gray-300 mb-6">{{ $content['contact_location'] ?? 'Based in Beirut, Lebanon — available for remote or local projects.' }}</p>
 
                                 <div class="space-y-4 mb-8">
                                     <div class="flex items-center gap-3">
@@ -695,7 +599,7 @@
                                         </span>
                                         <div>
                                             <div class="text-xs text-gray-500 dark:text-gray-400">Email</div>
-                                            <div class="font-semibold">info@scorpiosoft.tech</div>
+                                            <div class="font-semibold">{{ $content['contact_email'] ?? 'info@scorpiosoft.tech' }}</div>
                                         </div>
                                     </div>
 
@@ -710,7 +614,7 @@
                                         </span>
                                         <div>
                                             <div class="text-xs text-gray-500 dark:text-gray-400">Phone</div>
-                                            <div class="font-semibold">+961-71-036488</div>
+                                            <div class="font-semibold">{{ $content['contact_phone'] ?? '+961-71-036488' }}</div>
                                         </div>
                                     </div>
 
@@ -725,7 +629,7 @@
                                         </span>
                                         <div>
                                             <div class="text-xs text-gray-500 dark:text-gray-400">Working hours</div>
-                                            <div class="font-semibold">9:00 — 18:00 (GMT+3)</div>
+                                            <div class="font-semibold">{{ $content['contact_hours'] ?? '9:00 — 18:00 (GMT+3)' }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -754,7 +658,7 @@
 
             <footer class="py-12 text-center border-t border-gray-200 dark:border-gray-800">
                 <div class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    © {{ date('Y') }} Scorpio Software — Crafted with
+                    © {{ date('Y') }} {{ $content['brand_name'] ?? 'Scorpio Software' }} — Crafted with
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500 animate-pulse"
                         viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
