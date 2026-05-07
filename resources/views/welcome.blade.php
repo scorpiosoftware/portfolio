@@ -145,12 +145,12 @@
                 <div class="flex items-center gap-3 group cursor-pointer">
                     <div
                         class="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        <img src="./imgs/scorpiox-logo.png" alt="" class="w-full">
+                        <img src="./imgs/scorpiosoft-logo.png" alt="" class="w-full">
                     </div>
                     <div class="transform transition-all duration-300 group-hover:translate-x-1">
                         <h1
                             class="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                            ScorpioX
+                            Scorpio Software
                         </h1>
                         <p class="text-xs text-gray-600 dark:text-gray-400">
                             Software Developement • Software Engineer
@@ -165,12 +165,12 @@
                         <span
                             class="nav-underline absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transform transition-transform duration-300 scale-x-0"></span>
                     </a>
-                    <a href="#projects"
+                    {{-- <a href="#projects"
                         class="nav-link relative py-2 transition-all duration-300 hover:text-indigo-600 dark:hover:text-indigo-400">
                         Projects
                         <span
                             class="nav-underline absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transform transition-transform duration-300 scale-x-0"></span>
-                    </a>
+                    </a> --}}
                     <a href="#pricing"
                         class="nav-link relative py-2 transition-all duration-300 hover:text-indigo-600 dark:hover:text-indigo-400">
                         Pricing
@@ -226,8 +226,8 @@
                         <nav class="space-y-4">
                             <a href="#services" onclick="closeMobileMenu()"
                                 class="block font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">Services</a>
-                            <a href="#projects" onclick="closeMobileMenu()"
-                                class="block font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">Projects</a>
+                            {{-- <a href="#projects" onclick="closeMobileMenu()"
+                                class="block font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">Projects</a> --}}
                             <a href="#pricing" onclick="closeMobileMenu()"
                                 class="block font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">Plans</a>
                             <a href="#contact" onclick="closeMobileMenu()"
@@ -331,24 +331,37 @@
                             <h3
                                 class="font-bold text-xl mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                                 Featured Project</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">E‑commerce platform with multi-branch POS
-                                integration and inventory sync.</p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">E-commerce websites built from scratch &amp; complete POS systems tailored for small to medium businesses.</p>
 
                             <div
                                 class="bg-white/50 dark:bg-gray-800/50 backdrop-blur rounded-xl p-4 border border-gray-200 dark:border-gray-700 mb-6">
                                 <div class="text-sm font-semibold mb-3">Tech Stack</div>
                                 <div class="flex flex-wrap gap-2">
-                                    @foreach (['Laravel', 'Tailwind', 'MySQL', 'POS'] as $tech)
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
-                                            {{ $tech }}
-                                        </span>
-                                    @endforeach
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-700 transform transition-all duration-300 hover:scale-110 hover:shadow-md">
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.605 6v12L12 24l10.395-6V6L12 0zm0 2.192l8.203 4.73v9.156L12 20.808l-8.203-4.73V6.922L12 2.192z"/></svg>
+                                        Laravel
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-700 transform transition-all duration-300 hover:scale-110 hover:shadow-md">
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.143.946-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.292zM5.317 5.09c1.023 0 2.515.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.866 3.584a20.93 20.93 0 0 1 1.814-.103c.632 0 1.246.036 1.826.104-.598.96-1.208 1.99-1.826 3.054-.618-1.06-1.228-2.09-1.814-3.055zm-1.355 7.715c.344.58.695 1.157 1.07 1.728-1.18-.152-2.29-.388-3.29-.7.3-.97.72-1.97 1.22-2.98l1 1.952zm6.36-1.95c.5 1.006.92 2.002 1.22 2.968-1.003.313-2.117.55-3.302.702.38-.575.73-1.154 1.075-1.74l1.007-1.93zm.916 4.08c.506-.157 1.003-.332 1.49-.52.424.992.713 1.96.802 2.826.083.797-.056 1.393-.366 1.575-.19.11-.43.157-.712.157-.738 0-1.713-.394-2.8-1.1.395-.477.787-.988 1.165-1.528l.42-.41zm-8.27 1.953c-.384.543-.778 1.056-1.176 1.535-1.084.703-2.057 1.095-2.793 1.095-.278 0-.513-.047-.703-.152-.308-.18-.449-.773-.37-1.565.088-.866.377-1.834.8-2.825.488.188.99.362 1.5.52l.4.39c.376.54.77 1.05 1.342 1.002zm4.135 3.16c-.692.73-1.39 1.363-2.064 1.88-.673.517-1.3.847-1.835.847-.245 0-.46-.054-.64-.16-.532-.308-.735-1.063-.574-2.15.053-.36.147-.742.272-1.136.79.26 1.626.465 2.494.608.432.694.877 1.358 1.347 1.11zm-.002-6.32a20.82 20.82 0 0 1 0 3.07c-.57.04-1.147.07-1.736.07-.588 0-1.163-.027-1.73-.067a20.82 20.82 0 0 1 0-3.073c.567-.04 1.142-.066 1.73-.066.59 0 1.166.026 1.736.066z"/></svg>
+                                        React
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-700 transform transition-all duration-300 hover:scale-110 hover:shadow-md">
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
+                                        Tailwind CSS
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-700 transform transition-all duration-300 hover:scale-110 hover:shadow-md">
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 0 0-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 0 0-.195 4.41H0c.055-1.966.192-3.81.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095c.242 2.015.384 3.86.428 5.53zm4.017-4.08c-.378 2.045-.876 3.533-1.492 4.46-.482.716-1.01 1.073-1.583 1.073-.153 0-.34-.046-.566-.138v-.494c.11.017.24.026.386.026.268 0 .483-.075.647-.222.197-.18.295-.382.295-.605 0-.155-.077-.47-.23-.944L6.23 14.615h.91l.727 2.36c.164.536.233.91.205 1.123.4-1.064.678-2.227.835-3.483zm12.325 4.08h-2.63v-5.53h.885v4.85h1.745zm-3.32.135c-.591 0-1.043-.269-1.353-.808-.309-.54-.463-1.287-.463-2.243 0-.868.17-1.575.508-2.12.338-.546.814-.82 1.427-.82.578 0 1.02.252 1.33.757h.01l-.01-.244v-1.806h.88v5.964h-.713l-.094-.467h-.016c-.289.35-.69.787-1.506.787zm.303-.782c.375 0 .62-.134.785-.402l.012-2.183c-.16-.268-.392-.402-.747-.402-.355 0-.612.16-.768.482-.157.32-.235.77-.235 1.352 0 .583.076 1.014.23 1.295.152.28.395.42.723.42z"/></svg>
+                                        MySQL
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700 transform transition-all duration-300 hover:scale-110 hover:shadow-md">
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                                        Real-time
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="flex gap-4">
-                                <a class="group inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-all duration-300 hover:gap-2"
+                                {{-- <a class="group inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-all duration-300 hover:gap-2"
                                     href="#projects">
                                     View projects
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
@@ -356,7 +369,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5l7 7-7 7" />
                                     </svg>
-                                </a>
+                                </a> --}}
                                 <a class="group inline-flex items-center gap-1 text-sm font-medium text-purple-600 dark:text-purple-400 transition-all duration-300 hover:gap-2"
                                     href="#contact">
                                     Get similar
@@ -534,7 +547,8 @@
                 </div>
             </section>
 
-            <!-- Projects Section -->
+            {{-- Projects Section (commented out) --}}
+            @if(false)
             <section id="projects" class="mt-32 scroll-mt-20">
                 <div class="text-center mb-12 animate-fade-in-up">
                     <span
@@ -604,6 +618,7 @@
                     @endforeach
                 </div>
             </section>
+            @endif
 
             <!-- Contact Section -->
             <section id="contact" class="mt-32 mb-20 scroll-mt-20">
@@ -680,7 +695,7 @@
                                         </span>
                                         <div>
                                             <div class="text-xs text-gray-500 dark:text-gray-400">Email</div>
-                                            <div class="font-semibold">info@scorpiox.com</div>
+                                            <div class="font-semibold">info@scorpiosoft.tech</div>
                                         </div>
                                     </div>
 
@@ -739,7 +754,7 @@
 
             <footer class="py-12 text-center border-t border-gray-200 dark:border-gray-800">
                 <div class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    © {{ date('Y') }} ScorpioX — Crafted with
+                    © {{ date('Y') }} Scorpio Software — Crafted with
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500 animate-pulse"
                         viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -848,7 +863,7 @@
             }
 
             // Track active section
-            const sections = ['services', 'projects', 'contact'];
+            const sections = ['services', 'contact'];
             const current = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
