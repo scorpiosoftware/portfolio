@@ -35,6 +35,15 @@ class SiteContentSeeder extends Seeder
             ['key' => 'contact_phone',    'label' => 'Phone',                'section' => 'contact', 'type' => 'text',     'value' => '+961-71-036488'],
             ['key' => 'contact_hours',    'label' => 'Working Hours',        'section' => 'contact', 'type' => 'text',     'value' => '9:00 — 18:00 (GMT+3)'],
             ['key' => 'contact_location', 'label' => 'Location Description', 'section' => 'contact', 'type' => 'textarea', 'value' => 'Based in Beirut, Lebanon — available for remote or local projects.'],
+
+            // Email / SMTP
+            ['key' => 'mail_host',         'label' => 'Mail Host',         'section' => 'email', 'type' => 'text',     'value' => ''],
+            ['key' => 'mail_port',         'label' => 'Mail Port',         'section' => 'email', 'type' => 'text',     'value' => '587'],
+            ['key' => 'mail_encryption',   'label' => 'Encryption',        'section' => 'email', 'type' => 'text',     'value' => 'tls'],
+            ['key' => 'mail_username',     'label' => 'Username',          'section' => 'email', 'type' => 'text',     'value' => ''],
+            ['key' => 'mail_password',     'label' => 'Password',          'section' => 'email', 'type' => 'password', 'value' => ''],
+            ['key' => 'mail_from_address', 'label' => 'From Address',      'section' => 'email', 'type' => 'text',     'value' => 'info@scorpiosoft.tech'],
+            ['key' => 'mail_from_name',    'label' => 'From Name',         'section' => 'email', 'type' => 'text',     'value' => 'Scorpio Software'],
         ];
 
         foreach ($items as $item) {

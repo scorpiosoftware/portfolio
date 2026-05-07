@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\SiteContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -79,6 +80,48 @@ class DashboardController extends Controller
         $service->delete();
 
         return response()->json(['success' => true]);
+    }
+
+    // ── Email configuration ────────────────────────────────────────────────
+
+    public function updateEmailConfig(Request $request)
+    {
+        $data = $request->validate([
+            'mail_host'         => 'nullable|string|max:255',
+            'mail_port'         => 'nullable|string|max:10',
+            'mail_encryption'   => 'nullable|in:tls,ssl,',
+            'mail_username'     => 'nullable|string|max:255',
+            'mail_password'     => 'nullable|string|max:255',
+            'mail_from_address' => 'nullable|string|max:255',
+            'mail_from_name'    => 'nullable|string|max:255',
+        ]);
+
+        foreach ($data as $key => $value) {
+            if ($key === 'mail_password' && empty($value)) {
+                continue;
+            }
+            SiteContent::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value ?? '', 'section' => 'email', 'type' => $key === 'mail_password' ? 'password' : 'text', 'label' => $key]
+            );
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+    public function testEmail(Request $request)
+    {
+        $request->validate(['to' => 'required|email']);
+
+        try {
+            Mail::raw(
+                'This is a test email from your Scorpio Software admin panel. Your email configuration is working correctly.',
+                fn ($msg) => $msg->to($request->to)->subject('Test Email — Scorpio Software')
+            );
+            return response()->json(['success' => true]);
+        } catch (\Throwable $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()]);
+        }
     }
 
     private function parseFeatures(string $raw): array

@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'));
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')->middleware('throttle:5,10');
 
 // Admin routes
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -19,5 +21,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/services',              [DashboardController::class, 'storeService'])->name('services.store');
         Route::put('/services/{service}',     [DashboardController::class, 'updateService'])->name('services.update');
         Route::delete('/services/{service}',  [DashboardController::class, 'deleteService'])->name('services.delete');
+
+        Route::post('/email/update', [DashboardController::class, 'updateEmailConfig'])->name('email.update');
+        Route::post('/email/test',   [DashboardController::class, 'testEmail'])->name('email.test');
     });
 });

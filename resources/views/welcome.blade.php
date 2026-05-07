@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Portfolio SSO</title>
+    <title>{{ $content['brand_name'] ?? 'Scorpio Software' }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -547,30 +548,69 @@
                                 <p class="text-gray-600 dark:text-gray-300 mb-6">Tell me about your project — I'll
                                     respond within one business day.</p>
 
-                                <form class="space-y-4">
-                                    <input
-                                        class="w-full border-2 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 bg-transparent focus:border-indigo-500 focus:outline-none transition-colors duration-300"
-                                        placeholder="Your name">
-                                    <input
-                                        class="w-full border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 bg-transparent focus:border-indigo-500 focus:outline-none transition-colors duration-300"
-                                        placeholder="Email">
-                                    <select
-                                        class="w-full border-2 bg-white dark:bg-gray-800  border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 bg-transparent focus:border-indigo-500 focus:outline-none transition-colors duration-300">
-                                        <option>Service needed</option>
+                                <form id="contact-form" class="space-y-4" novalidate>
+
+                                    {{-- Honeypot: invisible to humans, filled by bots --}}
+                                    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                                        <label>Leave this blank</label>
+                                        <input type="text" name="website" tabindex="-1" autocomplete="off" value="">
+                                    </div>
+
+                                    @php
+                                        $fi = 'w-full border-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition-colors duration-300 placeholder-gray-400';
+                                    @endphp
+
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <input type="text" id="cf-name" name="name"
+                                            class="{{ $fi }}" placeholder="Your name *" required maxlength="100">
+                                        <input type="tel" id="cf-phone" name="phone"
+                                            class="{{ $fi }}" placeholder="Phone number (optional)" maxlength="30">
+                                    </div>
+
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <input type="email" id="cf-email" name="email"
+                                            class="{{ $fi }}" placeholder="Email address *" required maxlength="150">
+                                        <input type="text" id="cf-company" name="company"
+                                            class="{{ $fi }}" placeholder="Business / Company name (optional)" maxlength="100">
+                                    </div>
+
+                                    <select id="cf-service" name="service"
+                                        class="{{ $fi }}">
+                                        <option value="" disabled selected>Service needed *</option>
                                         <option>Portfolio Website</option>
                                         <option>Business Website</option>
-                                        <option>E‑commerce + POS</option>
+                                        <option>E-commerce Store</option>
+                                        <option>POS System</option>
+                                        <option>E-commerce + POS</option>
+                                        <option>Other</option>
                                     </select>
-                                    <textarea
-                                        class="w-full border-2 border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 bg-transparent focus:border-indigo-500 focus:outline-none transition-colors duration-300"
-                                        rows="4" placeholder="Project details / timeline"></textarea>
+
+                                    <select id="cf-budget" name="budget"
+                                        class="{{ $fi }}">
+                                        <option value="">Budget range (optional)</option>
+                                        <option>Under $500</option>
+                                        <option>$500 – $1,000</option>
+                                        <option>$1,000 – $3,000</option>
+                                        <option>$3,000 – $5,000</option>
+                                        <option>$5,000+</option>
+                                        <option>Not sure yet</option>
+                                    </select>
+
+                                    <textarea id="cf-message" name="message"
+                                        class="{{ $fi }} resize-none"
+                                        rows="4" placeholder="Project details / timeline *" required maxlength="2000"></textarea>
+
+                                    <div id="cf-status" class="hidden text-sm rounded-xl px-4 py-3"></div>
+
                                     <div class="flex gap-4">
-                                        <button type="submit"
-                                            class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">Send
-                                            Message</button>
-                                        <button type="button"
-                                            class="flex-1 border-2 border-gray-300 dark:border-gray-600 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:border-indigo-500 hover:shadow-lg">Schedule
-                                            Call</button>
+                                        <button type="submit" id="cf-btn"
+                                            class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100">
+                                            Send Message
+                                        </button>
+                                        <a href="tel:{{ $content['contact_phone'] ?? '' }}"
+                                            class="flex-1 text-center border-2 border-gray-300 dark:border-gray-600 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:border-indigo-500 hover:shadow-lg text-gray-700 dark:text-gray-200">
+                                            Schedule Call
+                                        </a>
                                     </div>
                                 </form>
                             </div>
@@ -883,6 +923,84 @@
             resizeCanvas();
             initParticles();
         });
+    </script>
+
+    <script>
+        // ── Contact form ──────────────────────────────────────────────────────
+        (function () {
+            const form   = document.getElementById('contact-form');
+            const btn    = document.getElementById('cf-btn');
+            const status = document.getElementById('cf-status');
+            const csrf   = document.querySelector('meta[name="csrf-token"]')?.content;
+
+            if (!form) return;
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const name    = document.getElementById('cf-name').value.trim();
+                const email   = document.getElementById('cf-email').value.trim();
+                const phone   = document.getElementById('cf-phone').value.trim();
+                const company = document.getElementById('cf-company').value.trim();
+                const service = document.getElementById('cf-service').value;
+                const budget  = document.getElementById('cf-budget').value;
+                const message = document.getElementById('cf-message').value.trim();
+                const honey   = form.querySelector('[name="website"]').value;
+
+                if (!name || !email || !service || !message) {
+                    showStatus('Please fill in all required fields (marked with *).', false);
+                    return;
+                }
+
+                btn.disabled    = true;
+                btn.textContent = 'Sending…';
+                hideStatus();
+
+                try {
+                    const res = await fetch('{{ route('contact.send') }}', {
+                        method:  'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrf,
+                            'Accept':       'application/json',
+                        },
+                        body: JSON.stringify({ name, email, phone, company, service, budget, message, website: honey }),
+                    });
+
+                    if (res.status === 429) {
+                        showStatus('Too many requests. Please wait a few minutes and try again.', false);
+                        return;
+                    }
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                        showStatus('Your message was sent! I\'ll get back to you within one business day.', true);
+                        form.reset();
+                    } else {
+                        showStatus(data.error || 'Something went wrong. Please try again.', false);
+                    }
+                } catch {
+                    showStatus('Connection error. Please check your connection and try again.', false);
+                } finally {
+                    btn.disabled    = false;
+                    btn.textContent = 'Send Message';
+                }
+            });
+
+            function showStatus(msg, success) {
+                status.textContent = msg;
+                status.className   = 'text-sm rounded-xl px-4 py-3 ' + (
+                    success
+                        ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-700'
+                        : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-700'
+                );
+            }
+
+            function hideStatus() {
+                status.className = 'hidden';
+            }
+        })();
     </script>
 </body>
 
