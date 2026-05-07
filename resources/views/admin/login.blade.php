@@ -12,7 +12,7 @@
 
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 mb-4 shadow-2xl shadow-indigo-500/30">
-                <img src="{{ asset('imgs/scorpiosoft-logo.png') }}" alt="" class="w-full rounded-2xl">
+                <img src="{{ asset('imgs/scorpiosoft-logo-new.svg') }}" alt="" class="w-full rounded-2xl">
             </div>
             <h1 class="text-2xl font-bold text-white">Scorpio Software</h1>
             <p class="text-slate-400 text-sm mt-1">Admin Panel</p>

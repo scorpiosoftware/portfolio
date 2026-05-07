@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="{{ asset('imgs/scorpiosoft-logo.png') }}">
-    <link rel="shortcut icon" href="{{ asset('imgs/scorpiosoft-logo.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('imgs/scorpiosoft-logo-new.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('imgs/scorpiosoft-logo-new.svg') }}">
 
     <title>{{ $content['brand_name'] ?? 'Scorpio Software' }}</title>
 
@@ -147,8 +147,8 @@
             <div class="w-full max-w-6xl mx-auto px-6 flex items-center justify-between">
                 <div class="flex items-center gap-3 group cursor-pointer">
                     <div
-                        class="w-16 h-16 rounded-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        <img src="./imgs/scorpiosoft-logo.png" alt="" class="w-full h-full object-contain">
+                        class="w-16 h-16 rounded-full overflow-hidden transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        <img src="./imgs/scorpiosoft-logo-new.svg" alt="" class="w-full h-full object-contain">
                     </div>
                     <div class="transform transition-all duration-300 group-hover:translate-x-1">
                         <h1
