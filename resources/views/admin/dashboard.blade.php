@@ -43,7 +43,7 @@
             {{-- Logo --}}
             <div class="flex items-center gap-2.5 flex-shrink-0">
                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600">
-                    <img src="{{ asset('imgs/scorpiosoft-logo-new.svg') }}" alt="" class="w-full rounded-lg">
+                    <img src="{{ asset('imgs/scorpiosoft-logo-new.png') }}" alt="" class="w-full rounded-lg">
                 </div>
                 <div class="hidden sm:block">
                     <span class="text-gray-900 dark:text-white font-bold text-sm">Scorpio Software</span>
